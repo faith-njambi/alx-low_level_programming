@@ -1,11 +1,14 @@
 #include <stdio.h>
+#include "main.h"
 
 /**
 * main - Entry point
-* prints 1 to 100
-* prints Fizz for multiples of 3
+* 
+* prints 1 to 100, Fizz for multiples of 3
 * Buzz for multiples of 5
 * FizzBuzz for multiples of 3 and 5
+*
+* Return: always 0 (success)
 */
 int main (void)
 {
@@ -21,13 +24,13 @@ int main (void)
 		{
 			printf("Buzz");
 		}
-		else if (i % 3 == 0 && i % 5 == 0)
+		else if (i % 15 == 0)
 		{
 			printf("FizzBuzz");
 		}
 		else
 		{
-			printf("%d ", i);
+			printf("%i ", i);
 		}
 		if (i < 100)
 			printf(" ");
