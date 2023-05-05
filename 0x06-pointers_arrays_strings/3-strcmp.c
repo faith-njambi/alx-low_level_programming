@@ -1,10 +1,11 @@
 #include "main.h"
 
 /**
- * _strcmp - compare two strings
+ * _strcmp - to compare two strings
  * @s1: first string
  * @s2: second string
- * Return: 0 if s1 & s2 are equal or otherwise 
+ * Return: 0 if s1 & s2 are equal or
+ * otherwise 
  */
 int _strcmp(char *s1, char *s2)
 {
