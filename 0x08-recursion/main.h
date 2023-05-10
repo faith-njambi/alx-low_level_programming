@@ -1,3 +1,4 @@
+int check_sqrt(int n, int x);
 int check_prime(int n, int divisor);
 int _putchar(char c);
 void _puts_recursion(char *s);
