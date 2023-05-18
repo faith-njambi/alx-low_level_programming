@@ -11,16 +11,21 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	char *myarray;
+	unsigned int i;
 
 	if (nmemb == 0 || size == 0)
 	{
 		return (NULL);
 	}
-	myarray = (char *)malloc(nmemb * size);
+	myarray = malloc(nmemb * size);
 	if (myarray == 0)
 	{
 		return (NULL);
 	}
+
+	for (i = 0; i < nmemb * size; i++)
+	{
+		myarray[i] = 0;
+	}
 	return (myarray);
-	free(myarray);
 }
