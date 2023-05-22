@@ -2,9 +2,10 @@
 
 /**
 * main - prints file name that it was compiled from
-* Return:0
+*
+* Return: Always 0
 */
-int main ()
+int main(void)
 {
 	printf("%s\n", __FILE__);
 	return (0);
