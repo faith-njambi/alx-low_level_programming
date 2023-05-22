@@ -4,8 +4,13 @@
 
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
+
 /**
-* 
+* new_dog - creates new dog
+* @name: name of the dog
+* @age: age of the dog
+* @owner: owner of the dog
+* Return: NULL on function fail
 */
 dog_t *new_dog(char *name, float age, char *owner)
 {
@@ -17,12 +22,19 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	newDog->name = malloc(name_len);
 	newDog->owner = malloc(owner_len);
+	if (newDog->name == NULL || newDog->owner == NULL)
+	{
+		free(newDog->name);
+		free(newDog->owner);
+		free(newDog);
+		return (NULL);
+	}
 
 	_strcpy(newDog->name, name);
 	_strcpy(newDog->owner, owner);
 
 	newDog->age = age;
-	return newDog;
+	return (newDog);
 }
 
 /**
