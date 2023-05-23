@@ -15,42 +15,47 @@ int _strlen(char *s);
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	int name_len = 0, owner_len = 0;
-	dog_t *newDog;
+	dog_t *my_dog;
 
 	if (name != NULL && owner != NULL)
 	{
 		name_len = _strlen(name) + 1;
 		owner_len = _strlen(owner) + 1;
-		newDog = malloc(sizeof(dog_t));
+		my_dog = malloc(sizeof(dog_t));
 
-		if (newDog == NULL)
+		if (my_dog == NULL)
 			return (NULL);
 
-		newDog->name = malloc(sizeof(char) * name_len);
-		newDog->owner = malloc(sizeof(char) * owner_len);
+		my_dog->name = malloc(sizeof(char) * name_len);
+		my_dog->owner = malloc(sizeof(char) * owner_len);
 
-		if (newDog->name == NULL || newDog->owner == NULL)
+		if (my_dog->name == NULL)
 		{
-			free(newDog->name);
-			free(newDog->owner);
-			free(newDog);
+			free(my_dog);
 			return (NULL);
 		}
 
-		newDog->name = _strcpy(newDog->name, name);
-		newDog->owner = _strcpy(newDog->owner, owner);
-		newDog->age = age;
+		if (my_dog->owner == NULL)
+		{
+			free(my_dog->name);
+			free(my_dog);
+			return (NULL);
+		}
+
+		my_dog->name = _strcpy(my_dog->name, name);
+		my_dog->owner = _strcpy(my_dog->owner, owner);
+		my_dog->age = age;
 	}
 	else
 	{
 		return (NULL);
 	}
 
-	return (newDog);
+	return (my_dog);
 }
 
 /**
-* strcpy - copies a string + terminating bytes
+* _strcpy - copies a string + terminating bytes
 * @dest: destination
 * @src: string source
 * Return: success
