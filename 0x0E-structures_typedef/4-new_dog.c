@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "dog.h"
 
@@ -10,30 +9,43 @@ int _strlen(char *s);
 * @name: name of the dog
 * @age: age of the dog
 * @owner: owner of the dog
+*
 * Return: NULL on function fail
 */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	size_t name_len = _strlen(name) + 1;
-	size_t owner_len = _strlen(owner) + 1;
+	int name_len = 0, owner_len = 0;
+	dog_t *newDog;
 
-	dog_t *newDog = malloc(sizeof(dog_t));
-	if (newDog == NULL)
-		return (NULL);
-	newDog->name = malloc(name_len);
-	newDog->owner = malloc(owner_len);
-	if (newDog->name == NULL || newDog->owner == NULL)
+	if (name != NULL && owner != NULL)
 	{
-		free(newDog->name);
-		free(newDog->owner);
-		free(newDog);
+		name_len = _strlen(name) + 1;
+		owner_len = _strlen(owner) + 1;
+		newDog = malloc(sizeof(dog_t));
+
+		if (newDog == NULL)
+			return (NULL);
+
+		newDog->name = malloc(sizeof(char) * name_len);
+		newDog->owner = malloc(sizeof(char) * owner_len);
+
+		if (newDog->name == NULL || newDog->owner == NULL)
+		{
+			free(newDog->name);
+			free(newDog->owner);
+			free(newDog);
+			return (NULL);
+		}
+
+		newDog->name = _strcpy(newDog->name, name);
+		newDog->owner = _strcpy(newDog->owner, owner);
+		newDog->age = age;
+	}
+	else
+	{
 		return (NULL);
 	}
 
-	_strcpy(newDog->name, name);
-	_strcpy(newDog->owner, owner);
-
-	newDog->age = age;
 	return (newDog);
 }
 
