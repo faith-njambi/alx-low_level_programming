@@ -13,15 +13,16 @@ int create_file(const char *filename, char *text_content)
 	int i;
 	int len = 0;
 	ssize_t bytesWritten;
+	mode_t permission = S_IRUSR | S_IWUSR;
 
-	if (filename == NULL)
+	if (!filename)
 		return (-1);
 
-	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC | S_IRUSR | S_IWUSR);
+	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, permission);
 	if (fd == -1)
 		return (-1);
 
-	if (text_content != NULL)
+	if (text_content)
 	{
 		for (i = 0; text_content[i] != '\0'; i++)
 			len++;
