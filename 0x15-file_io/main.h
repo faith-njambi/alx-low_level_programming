@@ -5,10 +5,23 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <elf.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 int _putchar(char c);
 ssize_t read_textfile(const char *filename, size_t letters);
 int create_file(const char *filename, char *text_content);
 int append_text_to_file(const char *filename, char *text_content);
+void check_Elf(unsigned char *ident);
+void print_Magic(unsigned char *ident);
+void print_Class(unsigned char *ident);
+void print_Data(unsigned char *ident);
+void print_Version(unsigned char *ident);
+void print_OSABI(unsigned char *ident);
+void print_ABI(unsigned char *ident);
+void print_Type(unsigned int type, unsigned char *ident);
+void print_Entry(unsigned long int entry, unsigned char *ident);
+void close_Elf(int fd);
 
 #endif
