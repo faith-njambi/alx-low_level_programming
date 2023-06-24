@@ -261,10 +261,9 @@ void close_Elf(int fd)
 /**
  * main - Entry point of the program.
  * Description: If the file is not an ELF file return error
- * 
  * @argc: Argument count
  * @argv: Pointer to an array of arguements
- * Return: 0 on success.
+ * Return: 0 on success
  */
 
 int main(int argc __attribute__ ((unused)), char *argv[])
