@@ -253,7 +253,7 @@ void close_Elf(int fd)
 {
 	if (close(fd) == -1)
 	{
-		fprintf(STDERR_FILENO, "Error: Closing file");
+		fprintf(stderr, "Error: Closing file");
 		exit(98);
 	}
 }
