@@ -27,7 +27,6 @@ void check_Elf(unsigned char *ident)
 void print_Magic(unsigned char *ident)
 {
 	int i;
-	char EI_NIDENT;
 
 	printf("Magic: ");
 	for (i = 0; i < EI_NIDENT; i++)
@@ -47,7 +46,6 @@ void print_Magic(unsigned char *ident)
  */
 void print_Class(unsigned char *ident)
 {
-	int EI_CLASS, ELFCLASSNONE, ELFCLASS32, ELFCLASS64;
 	printf("Class: ");
 
 	switch (ident[EI_CLASS])
@@ -284,7 +282,7 @@ int main(int argc __attribute__ ((unused)), char *argv[])
 
 	if (header == NULL)
 	{
-		closeElf(fd);
+		close_Elf(fd);
 		dprintf(STDERR_FILENO, "Error: Can't allocate memory\n");
 		exit(98);
 	}
@@ -293,7 +291,7 @@ int main(int argc __attribute__ ((unused)), char *argv[])
 	if (readResult == -1)
 	{
 		free(header);
-		closeElf(file);
+		close_Elf(fd);
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
@@ -310,6 +308,6 @@ int main(int argc __attribute__ ((unused)), char *argv[])
 	print_Entry(header->e_entry, header->e_ident);
 
 	free(header);
-	closeElf(fd);
+	close_Elf(fd);
 	return (0);
 }
