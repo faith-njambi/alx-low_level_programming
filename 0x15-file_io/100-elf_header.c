@@ -129,43 +129,33 @@ void print_OSABI(unsigned char *ident)
 	case ELFOSABI_NONE:
 		printf("UNIX - System V\n");
 		break;
-
 	case ELFOSABI_HPUX:
 		printf("UNIX - HP-UX\n");
 		break;
-
 	case ELFOSABI_NETBSD:
 		printf("UNIX - NetBSD\n");
 		break;
-
 	case ELFOSABI_LINUX:
 		printf("UNIX - Linux\n");
 		break;
-
 	case ELFOSABI_SOLARIS:
 		printf("UNIX - Solaris\n");
 		break;
-
 	case ELFOSABI_IRIX:
 		printf("UNIX - IRIX\n");
 		break;
-
 	case ELFOSABI_FREEBSD:
 		printf("UNIX - FreeBSD\n");
 		break;
-
 	case ELFOSABI_TRU64:
 		printf("UNIX - TRU64\n");
 		break;
-
 	case ELFOSABI_ARM:
 		printf("ARM\n");
 		break;
-
 	case ELFOSABI_STANDALONE:
 		printf("Standalone App\n");
 		break;
-
 	default:
 		printf("<unknown: %x>\n", ident[EI_OSABI]);
 	}
@@ -294,7 +284,6 @@ int main(int argc __attribute__ ((unused)), char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
-
 	check_Elf(header->e_ident);
 	printf("ELF Header:\n");
 	print_Magic(header->e_ident);
@@ -305,7 +294,6 @@ int main(int argc __attribute__ ((unused)), char *argv[])
 	print_ABI(header->e_ident);
 	print_Type(header->e_type, header->e_ident);
 	print_Entry(header->e_entry, header->e_ident);
-
 	free(header);
 	close_Elf(fd);
 	return (0);
